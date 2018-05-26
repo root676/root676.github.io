@@ -21,9 +21,9 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">QNEAT 3 - QGIS Network Analysis Toolbox 3</a>
+		<a href="#" class="navbar-left"><img src="img/icon_qneat3.svg"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,72 +59,79 @@
         </div>
       </div>
     </header>
-
+	<small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
     <!-- Page Content -->
     <div class="container">
 
       <div class="row">
         <div class="col-sm-8">
-          <h2 class="mt-4">What We Do</h2>
+          <h2 class="mt-4">What does QNEAT3?</h2></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
-          <p>
-            <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
-          </p>
         </div>
         <div class="col-sm-4">
-          <h2 class="mt-4">Contact Us</h2>
+          <h2 class="mt-4">Author</h2>
           <address>
-            <strong>Start Bootstrap</strong>
-            <br>3481 Melrose Place
-            <br>Beverly Hills, CA 90210
+            <strong>Clemens Raffler</strong>
+            <br>Mobility Researcher, GIS-Enthusiast
+			<br>Vienna, Austria
             <br>
+			<br>Twitter | Github: <a href="https://twitter.com/root676">@root676</a>
           </address>
           <address>
-            <abbr title="Phone">P:</abbr>
-            (123) 456-7890
-            <br>
-            <abbr title="Email">E:</abbr>
-            <a href="mailto:#">name@example.com</a>
+			<abbr title="QNEAT3 Repository:">Github:</abbr>
+			<a href="https://www.github.com/root676/QNEAT3">QNEAT3 Repository</a>
+			<br>
           </address>
         </div>
       </div>
       <!-- /.row -->
-
+	
+	  <h2 class="mt-4">Algorithm Types</h2></h2>
       <div class="row">
         <div class="col-sm-4 my-4">
           <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+			<a target="_blank" href="img/shortest_path_tile.png">
+            <img class="card-img-top" src="img/shortest_path_tile_small.png" alt="">
+			</a>
+			<small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
             <div class="card-body">
-              <h4 class="card-title">Card title</h4>
+              <h4 class="card-title">Shortest Path Algorithms</h4>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
+              <a href="#" class="btn btn-primary">more</a>
             </div>
           </div>
         </div>
         <div class="col-sm-4 my-4">
           <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+			<a target="_blank" href="img/isochrones_tile.png">
+            <img class="card-img-top" src="img/isochrones_tile_small.png" alt="">
+			</a>
+			<small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
             <div class="card-body">
-              <h4 class="card-title">Card title</h4>
+              <h4 class="card-title">Isochrone Area Algorithms</h4>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
+              <a href="#" class="btn btn-primary">more</a>
             </div>
           </div>
         </div>
         <div class="col-sm-4 my-4">
           <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+			<a target="_blank" href="img/matrix_tile.png">
+            <img class="card-img-top" src="img/matrix_tile_small.png" alt="">
+			</a>
+			<small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
             <div class="card-body">
-              <h4 class="card-title">Card title</h4>
+              <h4 class="card-title">OD-Matrix Algorithms</h4>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
+              <a href="#" class="btn btn-primary">more</a>
             </div>
           </div>
         </div>
@@ -136,9 +143,9 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-light">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-black">Copyright &copy; Clemens Raffler, 2018</p>
       </div>
       <!-- /.container -->
     </footer>
