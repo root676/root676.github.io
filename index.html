@@ -35,10 +35,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="#installation">Installation and Setup</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
@@ -64,11 +64,11 @@
     <!-- Page Content -->
     <div class="container">
 
-      <div class="row">
+      <div class="row" id="about">
         <div class="col-sm-8">
-          <h2 class="mt-4">What does QNEAT3?</h2></h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+          <h2 class="mt-4">About QNEAT3</h2>
+          <p>QNEAT3 is a QGIS plugin that is written in Python and is integrated in the QGIS3 Processing Framework. It offers advanced network analysis algorithms that range from simple <b>shortest path</b> solving to more complex tasks like <b>Isochrone Area</b> (aka service areas, accessibility polygons) and <b>OD-Matrix</b> (Origin-Destination-Matrix)computation.</p> 
+		  <p>All algorithms make use of the QGIS3 Python API, especially the <a href="https://qgis.org/pyqgis/master/analysis/Graph/index.html">graph analysis classes</a> that are written in C++. This lays a positive basis in terms of algorithm performance as the heavy computing (like <a href="https://qgis.org/api/classQgsGraphAnalyzer.html#a93e77f1bb11d0d5735a45f7138b577b6">dijkstra algorithm</a>) is performed using C++ machine code.</p>
         </div>
         <div class="col-sm-4">
           <h2 class="mt-4">Author</h2>
@@ -78,16 +78,75 @@
 			<br>Vienna, Austria
             <br>
 			<br>Twitter | Github: <a href="https://twitter.com/root676">@root676</a>
-          </address>
-          <address>
-			<abbr title="QNEAT3 Repository:">Github:</abbr>
-			<a href="https://www.github.com/root676/QNEAT3">QNEAT3 Repository</a>
+			<br>LinkedIn: <a href="www.linkedin.com/in/clemens-raffler-335085130">Clemens Raffler</a>
+			<br>
+			<br>Github Repository:
+			<a href="https://www.github.com/root676/QNEAT3">QNEAT3</a>
 			<br>
           </address>
         </div>
       </div>
-      <!-- /.row -->
+      
+	<div class="row" id="installation">
+		<div class="col-sm-8">
+		<h2 class="mt-4">Installation and Setup</h2>
+		<p>
+			When installing QNEAT3 using the QGIS Plugin Manager, a limited selection of algorithms (Shortest Path, OD-Matrices and certain Iso-Area algorithms) is available to you out-of-the-box. 
+			This is due to some Iso-Area algorithms (Iso-Contours and Iso-Polygons) relying on the <a target="_blank" href="https://matplotlib.org/">matplotlib</a> library 
+			that isn't shipped with QGIS3.
+		</p>
+		<p>
+			In order to activate the Iso-Area as Polygon/Contour algorithms you have to add the matplotlib library to your QGIS-Python installation. 
+			Depending on your operating system you may install matplotlib <b>manually</b> using the following options:
+			<br><br> 
+			<b>Windows</b>: 
+			<ol>
+				<li>Open the <i>OSGeo4W shell</i> that has been installed alongside QGIS (click <i>Start</i> - type <i>OSGeo4W Shell</i> - hit Enter)</li>
+				<li>Paste the command <code>python-qgis -m pip install matplotlib</code> into the shell</li>
+				<li>Accept the installation by typing 'yes' when prompted</li>
+				<li>Restart QGIS3</li>
+			</ol>
+			<br>
+			<b>Linux</b>
+			<ol>
+				<li>Open a terminal</li>
+				<li>Paste the command <code>python-qgis -m pip install matplotlib</code>it into the terminal, then hit Enter and confirm installation with 'yes' when prompted</li>
+				<li>Restart QGIS3</li>
+			</ol>
+			
+			
+		</p>
+		After this installation, you are ready to use all QNEAT3 Algorithms.
+		</div>
+		<div class="col-sm-4">
+		<br>
+		<br>
+		<a target="_blank" href="img/qneat3_toolbox.PNG">
+		<img class="card-img-top" src="img/qneat3_toolbox.PNG">
+		</a>
+		<small>Screenshot of the fully setup QNEAT3 Plugin inside the Processing Toolbox</small>
+		</div>
+	</div>
 	
+		<div class="row" id="installation">
+		<div class="col-sm-8">
+		<h2 class="mt-4">QNEAT3 Concepts</h2>
+		<p>
+
+		</p>
+		
+		</div>
+		<div class="col-sm-4">
+		<br>
+		<br>
+		<a target="_blank" href="img/shortest_path_tile.PNG">
+		<img class="card-img-top" src="img/shortest_path_tile.PNG">
+		</a>
+		<small>Concept of network entry- and exit-segments/cost</small>
+		</div>
+	</div>
+		Tip: Dont close algorithm after it is finished. Processing Log gives more information about the computation process.
+		
 	  <h2 class="mt-4">Algorithm Types</h2></h2>
       <div class="row">
         <div class="col-sm-4 my-4">
