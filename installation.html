@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>QNEAT3 - QGIS Network Analysis Toolbox 3</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/business-frontpage.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	<div class="container">
+	  <a href="#" class="navbar-left"><img src="img/icon_qneat3.svg"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto">
+		  <li class="nav-item active">
+			<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="index.html#algtypes" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  Algorithms
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="ShortestPathAlgs.html">Shortest Path</a>
+			  <a class="dropdown-item" href="IsoAreaAlgs.html">Iso-Area</a>
+			  <a class="dropdown-item" href="OdMatrixAlgs">OD-Matrices</a>
+			</div>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link disabled" href="installation.html">Installation and Setup</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link disabled" href="#">Features and Concepts</a>
+		  </li>
+		</ul>
+	  </div>
+	 </div>
+	</nav>
+
+    <!-- Header with Background Image -->
+    <header class="business-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="display-3 text-center text-white mt-4">QNEAT3</h1>
+            <h3 class="display-6 text-center text-white mt-4">QGIS Network Analysis Toolbox 3</h3>
+          </div>
+        </div>
+      </div>
+    </header>
+	<small  style="padding-left:1.5em"><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+    <!-- Page Content -->
+    <div class="container">
+
+	<div class="row" id="installation">
+		<div class="col-sm-8">
+		<h2 class="mt-4">Installation and Setup</h2>
+		<p>
+			When installing QNEAT3 using the QGIS Plugin Manager, a limited selection of algorithms (Shortest Path, OD-Matrices and certain Iso-Area algorithms) is available to you out-of-the-box. 
+			This is due to some Iso-Area algorithms (Iso-Contours and Iso-Polygons) relying on the <a target="_blank" href="https://matplotlib.org/">matplotlib</a> library 
+			that isn't shipped with QGIS3.
+		</p>
+		<p>
+			In order to activate the Iso-Area as Polygon/Contour algorithms you have to add the matplotlib library to your QGIS-Python installation. 
+			Depending on your operating system you may install matplotlib <b>manually</b> using the following options:
+			<br><br> 
+			<b>Windows</b>: 
+			<ol>
+				<li>Open the <i>OSGeo4W shell</i> that has been installed alongside QGIS (click <i>Start</i> - type <i>OSGeo4W Shell</i> - hit Enter)</li>
+				<li>Paste the command <code>python-qgis -m pip install matplotlib</code> into the shell</li>
+				<li>Accept the installation by typing 'yes' when prompted</li>
+				<li>Restart QGIS3</li>
+			</ol>
+			<br>
+			<b>Linux</b>
+			<ol>
+				<li>Open a terminal</li>
+				<li>Paste the command <code>python-qgis -m pip install matplotlib</code> into the terminal, then hit Enter and confirm installation with 'yes' when prompted</li>
+				<li>Restart QGIS3</li>
+			</ol>
+			
+			
+		</p>
+		After this installation, you are ready to use all QNEAT3 Algorithms.
+		</div>
+				<div class="col-sm-4">
+		<br>
+		<br>
+		<a target="_blank" href="img/qneat3_toolbox.PNG">
+		<img class="card-img-top" src="img/qneat3_toolbox.PNG">
+		</a>
+		<small>Screenshot of the fully setup QNEAT3 Plugin inside the Processing Toolbox</small>
+		</div>
+        <div class="col-sm-8">
+            <h2 class="mt-4">Tip on usage and output logging</h2>
+              <p>When running a QNEAT3 algorithm it can be useful to enable the processing window to stay open after the algorithm is finished. With this option enabled, you can inspect the algorithms messages and infos that are logged at runtime in the log window. 
+                You may set this option under <i>Settings>Options...>Processing>General><b>Keep dialog open after running an algorithm</b></i> (tick the checkbox to enable this option).
+              </p>            
+        </div>
+
+	</div>
+	
+		
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-light">
+      <div class="container">
+        <p class="m-0 text-center text-black">Copyright &copy; Clemens Raffler, 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

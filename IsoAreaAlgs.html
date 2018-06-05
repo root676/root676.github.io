@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>QNEAT3 - QGIS Network Analysis Toolbox 3</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/business-frontpage.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	<div class="container">
+	  <a href="#" class="navbar-left"><img src="img/icon_qneat3.svg"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto">
+		  <li class="nav-item active">
+			<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="index.html#algtypes" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  Algorithms
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="ShortestPathAlgs.html">Shortest Path</a>
+			  <a class="dropdown-item" href="IsoAreaAlgs.html">Iso-Area</a>
+			  <a class="dropdown-item" href="OdMatrixAlgs.html">OD-Matrices</a>
+			</div>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link disabled" href="installation.html">Installation and Setup</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link disabled" href="#">Features and Concepts</a>
+		  </li>
+		</ul>
+	  </div>
+	 </div>
+	</nav>
+
+	<header class="business-header" style="background-image: url('img/isochrones_tile.png'); height: 350px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="display-3 text-center text-white mt-4">QNEAT3</h1>
+            <h3 class="display-6 text-center text-white mt-4">IsoArea Algorithms</h3>
+          </div>
+        </div>
+      </div>
+    </header>
+	<small  style="padding-left:1.5em"><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+<!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Algorithm description
+        <small>Iso-Areas</small>
+      </h1>
+	  
+      <!-- Project One -->
+		<div class="row">
+        <div class="col-md-4">
+          <a href="img/iso_pointcloud_point_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/iso_pointcloud_point_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+        </div>
+        <div class="col-md-8">
+          <h3>Iso-Area as Pointcloud (from Point)</h3>
+          <p>The Iso-Area Pointcloud algorithms are the backbone of the QNEAT3 Iso-Area functionality. It queries the networks vertices inside 
+		  a user-defined cost-range starting a single point that is chosen by the user. Doing so, the algorithm also accounts for entry-costs of the startpoints and adds it to the on-network cost.
+		  As a whole the vertices found inside the given cost-range amount to the Iso-Area Pointcloud. The output as vector points is especially useful when quering costs (eg. using the output in nearest-neighbor analysis)</p>
+		  <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Start Point (x, y)</td>
+			  <td>Coordinate pair</td>
+			  <td>obtain by clicking on map canvas</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Size of Iso-Area</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec)</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>Pointcloud Layer</td>
+			  <td>Output Vector Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="img/iso_pointcloud_layer_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/iso_pointcloud_layer_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+        </div>
+        <div class="col-md-8">
+          <h3>Iso-Area as Pointcloud (from Layer)</h3>
+          <p>This algorithm extends the capabilities of his little brother above as it queries the networks vertices inside 
+		  a user-defined cost-range starting from multiple points provided in a point vector layer. Doing so, the algorithm also accounts for entry-costs of the startpoints and assigns the nearest start-point ID to each vertex.
+		  As a whole the vertices found inside the given cost-range amount to the Iso-Area Pointcloud. The output as vector points is especially useful when quering costs (eg. using the output in nearest-neighbor analysis)</p>
+		  <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Startpoint Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Field</td>
+			  <td>A unique identifier field for the startpoints (preferably Integer)</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Size of Iso-Area</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec)</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>Pointcloud Layer</td>
+			  <td>Output Vector Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+      </div>
+	  <div class="row">
+        <div class="col-md-4">
+          <a href="img/iso_interpolation_point_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/iso_interpolation_point_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+        </div>
+        <div class="col-md-8">
+          <h3>Iso-Area as Interpolation (from Point)</h3>
+          <p class="text-info bg-light p-1 rounded"><b>Warning</b>: 
+            Algorithm will only work with data in projected coordinate systems (eg. no WGS84). This is due to a limitation of the <code><u><a class="text-info" target="_blank" href="https://qgis.org/api/classQgsTinInterpolator.html">QgsTinInterpolator</a></u></code> class (see thread at <u><a class="text-info" target="_blank" href="https://gis.stackexchange.com/questions/137456/tin-interpolation-in-qgis-creates-weird-lines?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa">gis.stackexchange.com</a></u>).
+            <br> You may use <u><a class="text-info" target="_blank" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM-Coordinate zones</a></u> matching your analysis area.
+          </p>
+          <p>The Iso-Area as Interpolation algorithms take the Pointcloud approach a step further. It outputs an interpolated distance raster starting from a user-chosen point, applying the TIN-Interpolation method implemented in QGIS3 (<code><a target="_blank" href="https://qgis.org/api/classQgsTinInterpolator.html">QgsTinInterpolator</a></code>).
+		  The resulting distance raster is especially useful in multi-criteria site-analysis that look at accessibility. It can be combined with fuzzy modeling methods.</p>
+		  <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Start Point (x, y)</td>
+			  <td>Coordinate pair</td>
+			  <td>obtain by clicking on map canvas</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Size of Iso-Area</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec)</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>Interpolation Layer</td>
+			  <td>Output Raster Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+      </div>
+	  <div class="row">
+        <div class="col-md-4">
+          <a href="img/iso_interpolation_layer_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/iso_interpolation_layer_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+        </div>
+        <div class="col-md-8">
+          <h3>Iso-Area as Interpolation (from Layer)</h3>
+          <p class="text-info bg-light p-1 rounded"><b>Warning</b>: 
+            Algorithm will only work with data in projected coordinate systems (eg. no WGS84). This is due to a limitation of the <code><u><a class="text-info" target="_blank" href="https://qgis.org/api/classQgsTinInterpolator.html">QgsTinInterpolator</a></u></code> class (see thread at <u><a class="text-info" target="_blank" href="https://gis.stackexchange.com/questions/137456/tin-interpolation-in-qgis-creates-weird-lines?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa">gis.stackexchange.com</a></u>).
+            <br> You may use <u><a class="text-info" target="_blank" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM-Coordinate zones</a></u> matching your analysis area.
+          </p>
+          <p>As the point-based interpolation algorithm, this one outputs an interpolated distance raster starting from multiple points provided by a vector layer, applying the TIN-Interpolation method implemented in QGIS3 (<a target="_blank" href="https://qgis.org/api/classQgsTinInterpolator.html">QgsTinInterpolator</a>).
+		  The resulting distance raster is especially useful in multi-criteria site-analysis that look at accessibility. It can be combined with fuzzy modeling methods.</p>
+	<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Startpoint Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Field</td>
+			  <td>A unique identifier field for the startpoints (preferably Integer)</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Size of Iso-Area</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec)</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>Interpolation Layer</td>
+			  <td>Output Raster Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="img/iso_contour_point_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/iso_contour_point_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+        </div>
+        <div class="col-md-8">
+          <h3>Iso-Area as Contours (from Point)</h3>
+          <p class="text-info bg-light p-1 rounded"><b>Warning</b>: 
+            Algorithm will only work with data in projected coordinate systems (eg. no WGS84). This is due to a limitation of the <code><u><a class="text-info" target="_blank" href="https://qgis.org/api/classQgsTinInterpolator.html">QgsTinInterpolator</a></u></code> class (see thread at <u><a class="text-info" target="_blank" href="https://gis.stackexchange.com/questions/137456/tin-interpolation-in-qgis-creates-weird-lines?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa">gis.stackexchange.com</a></u>).
+            <br> You may use <u><a class="text-info" target="_blank" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM-Coordinate zones</a></u> matching your analysis area.
+          </p>
+          <p>The Iso-Area as Contours algorithm outputs contours (cost-break-lines) derived from an interpolated distance raster starting from a single points provided by a vector layer.
+          For this it uses the matplotlib library, therefore the algorithm only is available when this library has been installed (see <a href="installation.html">Installation and Setup</a>).
+		  The contours are especially suited for visualization techniques of accessibility.</p>
+	<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Start Point (x, y)</td>
+			  <td>Coordinate pair</td>
+			  <td>obtain by clicking on map canvas</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Size of Iso-Area</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec)</td>
+			</tr>
+            <tr>
+			  <th scope="row">4</th>
+			  <td>Contour interval (distance or time value)</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec), determines number of contours in output.</td>
+			</tr>
+            <tr>
+			  <th scope="row">5</th>
+			  <td>Cell Size</td>
+			  <td>user input</td>
+			  <td>set higher for faster but more inacurate results</td>
+			</tr>
+			<tr>
+			  <th scope="row">6</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">7</th>
+			  <td>Interpolation Layer</td>
+			  <td>Output Raster Layer</td>
+			  <td>optional</td>
+			</tr>
+			<tr>
+			  <th scope="row">8</th>
+			  <td>Contour Layer</td>
+			  <td>Output Vector Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+       </div>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="img/iso_contour_layer_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/iso_contour_layer_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+        </div>
+        <div class="col-md-8">
+          <h3>Iso-Area as Contours (from layer)</h3>
+          <p class="text-info bg-light p-1 rounded"><b>Warning</b>: 
+            Algorithm will only work with data in projected coordinate systems (eg. no WGS84). This is due to a limitation of the <code><u><a class="text-info" target="_blank" href="https://qgis.org/api/classQgsTinInterpolator.html">QgsTinInterpolator</a></u></code> class (see thread at <u><a class="text-info" target="_blank" href="https://gis.stackexchange.com/questions/137456/tin-interpolation-in-qgis-creates-weird-lines?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa">gis.stackexchange.com</a></u>).
+            <br> You may use <u><a class="text-info" target="_blank" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM-Coordinate zones</a></u> matching your analysis area.
+          </p>
+          <p>The Iso-Area as Contours algorithm outputs contours (cost-break-lines) derived from an interpolated distance raster starting from a single points provided by a vector layer.
+          For this it uses the matplotlib library, therefore the algorithm only is available when this library has been installed (see <a href="installation.html">Installation and Setup</a>).
+		  The contours are especially suited for visualization techniques of accessibility.</p>
+	<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Start Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Size of Iso-Area</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec)</td>
+			</tr>
+            <tr>
+			  <th scope="row">4</th>
+			  <td>Contour interval (distance or time value)</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec), determines number of contours in output.</td>
+			</tr>
+            <tr>
+			  <th scope="row">5</th>
+			  <td>Cell Size</td>
+			  <td>user input</td>
+			  <td>set higher for faster but more inacurate results</td>
+			</tr>
+			<tr>
+			  <th scope="row">6</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">7</th>
+			  <td>Interpolation Layer</td>
+			  <td>Output Raster Layer</td>
+			  <td>optional</td>
+			</tr>
+			<tr>
+			  <th scope="row">8</th>
+			  <td>Contour Layer</td>
+			  <td>Output Vector Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+       </div>
+      <hr>
+	        <div class="row">
+        <div class="col-md-4">
+          <a href="img/iso_polygon_point_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/iso_polygon_point_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+
+	          </div>
+        <div class="col-md-8">
+          <h3>Iso-Area as Polygon (from Point)</h3>
+          <p class="text-info bg-light p-1 rounded"><b>Warning</b>: 
+            Algorithm will only work with data in projected coordinate systems (eg. no WGS84). This is due to a limitation of the <code><u><a class="text-info" target="_blank" href="https://qgis.org/api/classQgsTinInterpolator.html">QgsTinInterpolator</a></u></code> class (see thread at <u><a class="text-info" target="_blank" href="https://gis.stackexchange.com/questions/137456/tin-interpolation-in-qgis-creates-weird-lines?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa">gis.stackexchange.com</a></u>).
+            <br> You may use <u><a class="text-info" target="_blank" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM-Coordinate zones</a></u> matching your analysis area.
+          </p>
+          <p>The Iso-Area as Polygon algorithm outputs filled polygons (spreding to cost-break-lines) derived from an interpolated distance raster starting from a single point.
+          For this it uses the matplotlib library, therefore the algorithm only is available when this library has been installed (see <a href="installation.html">Installation and Setup</a>).
+		  The contours are especially suited for quering spatial objects that lie inside a specific driving distance or time range from multiple start points.</p>
+	<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Start Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Size of Iso-Area</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec)</td>
+			</tr>
+            <tr>
+			  <th scope="row">4</th>
+			  <td>Contour interval (distance or time value)</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec), determines number of contours in output.</td>
+			</tr>
+            <tr>
+			  <th scope="row">5</th>
+			  <td>Cell Size</td>
+			  <td>user input</td>
+			  <td>set higher for faster but more inacurate results</td>
+			</tr>
+			<tr>
+			  <th scope="row">6</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">7</th>
+			  <td>Interpolation Layer</td>
+			  <td>Output Raster Layer</td>
+			  <td>optional</td>
+			</tr>
+			<tr>
+			  <th scope="row">8</th>
+			  <td>Polygon Layer</td>
+			  <td>Output Vector Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+       </div>
+	   	        <div class="row">
+        <div class="col-md-4">
+          <a href="img/iso_polygon_layer_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/iso_polygon_layer_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+
+	          </div>
+        <div class="col-md-8">
+          <h3>Iso-Area as Polygon (from Layer)</h3>
+          <p class="text-info bg-light p-1 rounded"><b>Warning</b>: 
+            Algorithm will only work with data in projected coordinate systems (eg. no WGS84). This is due to a limitation of the <code><u><a class="text-info" target="_blank" href="https://qgis.org/api/classQgsTinInterpolator.html">QgsTinInterpolator</a></u></code> class (see thread at <u><a class="text-info" target="_blank" href="https://gis.stackexchange.com/questions/137456/tin-interpolation-in-qgis-creates-weird-lines?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa">gis.stackexchange.com</a></u>).
+            <br> You may use <u><a class="text-info" target="_blank" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM-Coordinate zones</a></u> matching your analysis area.
+          </p>
+          <p>The Iso-Area as Polygon algorithm outputs filled polygons (spreding to cost-break-lines) derived from an interpolated distance raster starting from a multiple points provided by a vector layer.
+          For this it uses the matplotlib library, therefore the algorithm only is available when this library has been installed (see <a href="installation.html">Installation and Setup</a>).
+		  The contours are especially suited for quering spatial objects that lie inside a specific driving distance or time range from multiple start points.</p>
+	<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Start Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Size of Iso-Area</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec)</td>
+			</tr>
+            <tr>
+			  <th scope="row">4</th>
+			  <td>Contour interval (distance or time value)</td>
+			  <td>user input</td>
+			  <td>dep. on strategy: max. distance / max. time(sec), determines number of contours in output.</td>
+			</tr>
+            <tr>
+			  <th scope="row">5</th>
+			  <td>Cell Size</td>
+			  <td>user input</td>
+			  <td>set higher for faster but more inacurate results</td>
+			</tr>
+			<tr>
+			  <th scope="row">6</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">7</th>
+			  <td>Interpolation Layer</td>
+			  <td>Output Raster Layer</td>
+			  <td>optional</td>
+			</tr>
+			<tr>
+			  <th scope="row">8</th>
+			  <td>Polygon Layer</td>
+			  <td>Output Vector Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+       </div>
+	   	  <br>
+
+		<br>
+	    <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Optional Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Direction field</td>
+			  <td>Field containing direction values</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Value for forward direction</td>
+			  <td>user input</td>
+			  <td>input must be referenced to Direction field</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Value for backward direction</td>
+			  <td>user input</td>
+			  <td>input must be referenced to Direction field</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Value for both directions</td>
+			  <td>user input</td>
+			  <td>input must be referenced to Direction field</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>Default direction</td>
+			  <td>Both Directions | Forward Direction | Backward Direction</td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">6</th>
+			  <td>Speed Field</td>
+			  <td>Field containing speed values</td>
+			  <td>must be numerical</td>
+			</tr>
+			<tr>
+			  <th scope="row">7</th>
+			  <td>Default speed</td>
+			  <td>user input</td>
+			  <td><b>(!)</b> sets network entry- and exit-speed </td>
+			</tr>
+			<tr>
+			  <th scope="row">8</th>
+			  <td>Topology tolerance</td>
+			  <td>user input</td>
+			  <td>Tolerate gaps in network (crs units)</td>
+			</tr>
+		  </tbody>
+		</table>
+    </div>
+	
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-light">
+      <div class="container">
+        <p class="m-0 text-center text-black">Copyright &copy; Clemens Raffler, 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

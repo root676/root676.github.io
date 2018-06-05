@@ -21,32 +21,38 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div class="container">
-		<a href="#" class="navbar-left"><img src="img/icon_qneat3.svg"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#installation">Installation and Setup</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	<div class="container">
+	  <a href="#" class="navbar-left"><img src="img/icon_qneat3.svg"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto">
+		  <li class="nav-item active">
+			<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="index.html#algtypes" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  Algorithms
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="ShortestPathAlgs.html">Shortest Path</a>
+			  <a class="dropdown-item" href="IsoAreaAlgs.html">Iso-Area</a>
+			  <a class="dropdown-item" href="OdMatrixAlgs">OD-Matrices</a>
+			</div>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link disabled" href="installation.html">Installation and Setup</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link disabled" href="#">Features and Concepts</a>
+		  </li>
+		</ul>
+	  </div>
+	 </div>
+	</nav>
 
     <!-- Header with Background Image -->
     <header class="business-header">
@@ -59,7 +65,8 @@
         </div>
       </div>
     </header>
-	<small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	<small  style="padding-left:1.5em"><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
 	
     <!-- Page Content -->
     <div class="container">
@@ -68,7 +75,7 @@
         <div class="col-sm-8">
           <h2 class="mt-4">About QNEAT3</h2>
           <p>QNEAT3 is a QGIS plugin that is written in Python and is integrated in the QGIS3 Processing Framework. It offers advanced network analysis algorithms that range from simple <b>shortest path</b> solving to more complex tasks like <b>Isochrone Area</b> (aka service areas, accessibility polygons) and <b>OD-Matrix</b> (Origin-Destination-Matrix)computation.</p> 
-		  <p>All algorithms make use of the QGIS3 Python API, especially the <a href="https://qgis.org/pyqgis/master/analysis/Graph/index.html">graph analysis classes</a> that are written in C++. This lays a positive basis in terms of algorithm performance as the heavy computing (like <a href="https://qgis.org/api/classQgsGraphAnalyzer.html#a93e77f1bb11d0d5735a45f7138b577b6">dijkstra algorithm</a>) is performed using C++ machine code.</p>
+		  <p>All algorithms make use of the QGIS3 Python API, especially the <a target="_blank" href="https://qgis.org/pyqgis/master/analysis/Graph/index.html">graph analysis classes</a> that are written in C++. This lays a positive basis in terms of algorithm performance as the heavy computing (like <a target="_blank" href="https://qgis.org/api/classQgsGraphAnalyzer.html#a93e77f1bb11d0d5735a45f7138b577b6">dijkstra algorithm</a>) is performed using C++ machine code. Other algorithms like polygon and contour based Iso-Area also make use of C/C++ based code like the <a target="_blank" href="https://qgis.org/pyqgis/master/analysis/Interpolator/index.html">QGIS Interpolation classes</a> for distance value interpolation, <a target="_blank" href="http://www.gdal.org/">GDAL library</a> for raster data io and <a target="_blank" href="http://www.numpy.org/">numpy</a> for further processing.</p>
         </div>
         <div class="col-sm-4">
           <h2 class="mt-4">Author</h2>
@@ -86,81 +93,21 @@
           </address>
         </div>
       </div>
-      
-	<div class="row" id="installation">
-		<div class="col-sm-8">
-		<h2 class="mt-4">Installation and Setup</h2>
-		<p>
-			When installing QNEAT3 using the QGIS Plugin Manager, a limited selection of algorithms (Shortest Path, OD-Matrices and certain Iso-Area algorithms) is available to you out-of-the-box. 
-			This is due to some Iso-Area algorithms (Iso-Contours and Iso-Polygons) relying on the <a target="_blank" href="https://matplotlib.org/">matplotlib</a> library 
-			that isn't shipped with QGIS3.
-		</p>
-		<p>
-			In order to activate the Iso-Area as Polygon/Contour algorithms you have to add the matplotlib library to your QGIS-Python installation. 
-			Depending on your operating system you may install matplotlib <b>manually</b> using the following options:
-			<br><br> 
-			<b>Windows</b>: 
-			<ol>
-				<li>Open the <i>OSGeo4W shell</i> that has been installed alongside QGIS (click <i>Start</i> - type <i>OSGeo4W Shell</i> - hit Enter)</li>
-				<li>Paste the command <code>python-qgis -m pip install matplotlib</code> into the shell</li>
-				<li>Accept the installation by typing 'yes' when prompted</li>
-				<li>Restart QGIS3</li>
-			</ol>
-			<br>
-			<b>Linux</b>
-			<ol>
-				<li>Open a terminal</li>
-				<li>Paste the command <code>python-qgis -m pip install matplotlib</code>it into the terminal, then hit Enter and confirm installation with 'yes' when prompted</li>
-				<li>Restart QGIS3</li>
-			</ol>
-			
-			
-		</p>
-		After this installation, you are ready to use all QNEAT3 Algorithms.
-		</div>
-		<div class="col-sm-4">
-		<br>
-		<br>
-		<a target="_blank" href="img/qneat3_toolbox.PNG">
-		<img class="card-img-top" src="img/qneat3_toolbox.PNG">
-		</a>
-		<small>Screenshot of the fully setup QNEAT3 Plugin inside the Processing Toolbox</small>
-		</div>
-	</div>
 	
-		<div class="row" id="installation">
-		<div class="col-sm-8">
-		<h2 class="mt-4">QNEAT3 Concepts</h2>
-		<p>
-
-		</p>
-		
-		</div>
-		<div class="col-sm-4">
-		<br>
-		<br>
-		<a target="_blank" href="img/shortest_path_tile.png">
-		<img class="card-img-top" src="img/shortest_path_tile.png">
-		</a>
-		<small>Concept of network entry- and exit-segments/cost</small>
-		</div>
-	</div>
-		Tip: Dont close algorithm after it is finished. Processing Log gives more information about the computation process.
-		
-	  <h2 class="mt-4">Algorithm Types</h2></h2>
+	<h2 class="mt-4" id="algtypes">Algorithms</h2></h2>
       <div class="row">
         <div class="col-sm-4 my-4">
           <div class="card">
 			<a target="_blank" href="img/shortest_path_tile.png">
             <img class="card-img-top" src="img/shortest_path_tile_small.png" alt="">
 			</a>
-			<small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+			<small style="padding-left:1.5em"><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
             <div class="card-body">
               <h4 class="card-title">Shortest Path Algorithms</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+              <p class="card-text">Pathfinding algorithms are the name and the game of network and graph analysis. Using the QGIS3 implementation of the <a target="_blank" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra Algorithm</a>, this algorithm computes the <i>geometry and costs along the shortest path between two points</i>.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">more</a>
+              <a href="ShortestPathAlgs.html" class="btn btn-primary">more</a>
             </div>
           </div>
         </div>
@@ -169,13 +116,13 @@
 			<a target="_blank" href="img/isochrones_tile.png">
             <img class="card-img-top" src="img/isochrones_tile_small.png" alt="">
 			</a>
-			<small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+			<small style="padding-left:1.5em"><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
             <div class="card-body">
-              <h4 class="card-title">Isochrone Area Algorithms</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
+              <h4 class="card-title">Iso-Area Algorithms</h4>
+              <p class="card-text">Iso-Areas are essentially the network-based version of buffers. They answer questions like <i>'How far can i go on a network when travelling 2500 meters from a given Startpoint on a street network?'</i>. Several approaches to compute Iso-Areas are implemented.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">more</a>
+              <a href="IsoAreaAlgs.html" class="btn btn-primary">more</a>
             </div>
           </div>
         </div>
@@ -184,18 +131,20 @@
 			<a target="_blank" href="img/matrix_tile.png">
             <img class="card-img-top" src="img/matrix_tile_small.png" alt="">
 			</a>
-			<small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+			<small style="padding-left:1.5em"><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
             <div class="card-body">
               <h4 class="card-title">OD-Matrix Algorithms</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+              <p class="card-text">OD-Matrix algorithms - in case of the QNEAT3 plugin - compute the <i>travel cost on network (either routed distance or routed time) between all combination of points in a layer</i>. Travel cost on network without computing the shortest path geometry? These algorithms do the job!</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">more</a>
+              <a href="OdMatrixAlgs.html" class="btn btn-primary">more</a>
             </div>
           </div>
         </div>
 
       </div>
+	  
+		
       <!-- /.row -->
 
     </div>

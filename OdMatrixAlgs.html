@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>QNEAT3 - QGIS Network Analysis Toolbox 3</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/business-frontpage.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	<div class="container">
+	  <a href="#" class="navbar-left"><img src="img/icon_qneat3.svg"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto">
+		  <li class="nav-item active">
+			<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="index.html#algtypes" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  Algorithms
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="ShortestPathAlgs.html">Shortest Path</a>
+			  <a class="dropdown-item" href="IsoAreaAlgs.html">Iso-Area</a>
+			  <a class="dropdown-item" href="OdMatrixAlgs.html">OD-Matrices</a>
+			</div>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link disabled" href="installation.html">Installation and Setup</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link disabled" href="#">Features and Concepts</a>
+		  </li>
+		</ul>
+	  </div>
+	 </div>
+	</nav>
+
+	<header class="business-header" style="background-image: url('img/matrix_tile.png'); height: 350px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="display-3 text-center text-black mt-4">QNEAT3</h1>
+            <h3 class="display-6 text-center text-black mt-4">OD-Matrix Algorithms</h3>
+          </div>
+        </div>
+      </div>
+    </header>
+	<small  style="padding-left:1.5em"><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+<!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Algorithm description
+        <small>OD-Matrices</small>
+      </h1>
+	  
+      <!-- Project One -->
+		<div class="row">
+        <div class="col-md-4">
+          <a href="img/od_mn_lines_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/od_mn_lines_alghelp_small.png" alt="">
+          </a>
+		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+        </div>
+        <div class="col-md-8">
+          <h3>OD-Matrix from Layers as Lines (m:n)</h3>
+          <p>The OD-Matrix from Layers as Lines (m:n) algorithm computes the network route-based cost of Origin-Destination relations between the points of two layers (layer m and layer n). 
+		  Costs components are split up into Entry-Cost, Network-Cost, 
+		  Exit-Cost and Total Cost (sum of all other cost components). The relation is then displayed as a 
+		  straight line between the point of origin and the destination point, featuring the costs as attributes 
+		  in the attribute table.</p>
+		  <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>From-Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Integer Field</td>
+			  <td>Field type preferably Integer</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>To-Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Integer Field</td>
+			  <td>Field type preferably Integer</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>OD-Line Layer</td>
+			  <td>Output Vector Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="img/od_table.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/od_table.png" alt="">
+          </a>
+
+        </div>
+        <div class="col-md-8">
+          <h3>OD Matrix from Layers as Table (m:n)</h3>
+			          <p>The OD-Matrix from Layers as Table (m:n) algorithm computes the network route-based cost of Origin-Destination relations between the points of two layers (layer m and layer n). 
+		  Costs components are split up into Entry-Cost, Network-Cost, 
+		  Exit-Cost and Total Cost (sum of all other cost components). The relation is then displayed as rows in 
+		  an attribute table.</p>
+		  <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>From-Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Integer Field</td>
+			  <td>Field type preferably Integer</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>To-Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Integer Field</td>
+			  <td>Field type preferably Integer</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>OD-Table</td>
+			  <td>Output Table</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+      </div>
+	  <div class="row">
+        <div class="col-md-4">
+          <a href="img/od_table.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/od_table.png" alt="">
+          </a>
+
+        </div>
+        <div class="col-md-8">
+          <h3>OD-Matrix from Points as CSV (n:n)</h3>
+					          <p>The OD-Matrix from Points as CSV (n:n) algorithm computes the network route-based cost of Origin-Destination relations between the points inside a single layer (n:n). 
+		  Costs components are split up into Entry-Cost, Network-Cost, 
+		  Exit-Cost and Total Cost (sum of all other cost components). The relation is then displayed as rows in 
+		  a CSV File.</p>
+		  		  <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Integer Field</td>
+			  <td>Field type preferably Integer</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>CSV-OD-Table</td>
+			  <td>Output CSV-Table</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+      </div>
+	  <div class="row">
+        <div class="col-md-4">
+          <a href="img/od_nn_lines_alghelp.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/od_nn_lines_alghelp_small.png" alt="">
+          </a>
+		  		  <small><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
+	
+		  
+        </div>
+        <div class="col-md-8">
+          <h3>OD-Matrix from Points as Lines (n:n)</h3>
+				          <p>The OD-Matrix from Points as Lines (n:n) algorithm computes the network route-based cost of Origin-Destination relations between the points inside a single layer (n:n). 
+		  Costs components are split up into Entry-Cost, Network-Cost, 
+		  Exit-Cost and Total Cost (sum of all other cost components). The relation is then displayed as Lines between those points.</p>
+		  		  		  <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Integer Field</td>
+			  <td>Field type preferably Integer</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>OD-Lines</td>
+			  <td>Output Vector Layer</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="img/od_table.png">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="img/od_table.png" alt="">
+          </a>
+
+        </div>
+        <div class="col-md-8">
+          <h3>OD-Matrix from Points as Table (n:n)</h3>
+				          <p>The OD-Matrix from Points as Table (n:n) algorithm computes the network route-based cost of Origin-Destination relations between the points inside a single layer (n:n). 
+		  Costs components are split up into Entry-Cost, Network-Cost, 
+		  Exit-Cost and Total Cost (sum of all other cost components). The relation is then displayed as rows in an attribute table.</p>
+		  		  <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Mandatory Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Network Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be LineString</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Point Layer</td>
+			  <td>Vector Layer</td>
+			  <td>Geometry type must be Point</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Unique Point ID Field</td>
+			  <td>Integer Field</td>
+			  <td>Field type preferably Integer</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Optimization Criterion</td>
+			  <td>Shortest | Fastest</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>OD-Table</td>
+			  <td>Output Attribute Table</td>
+			  <td>-</td>
+			</tr>
+		  </tbody>
+		</table>
+        </div>
+       </div>
+      <br>
+		<br>
+	    <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Optional Parameters</th>
+			  <th scope="col">Type</th>
+			  <th scope="col">Info</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Direction field</td>
+			  <td>Field containing direction values</td>
+			  <td>-</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Value for forward direction</td>
+			  <td>user input</td>
+			  <td>input must be referenced to Direction field</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Value for backward direction</td>
+			  <td>user input</td>
+			  <td>input must be referenced to Direction field</td>
+			</tr>
+			<tr>
+			  <th scope="row">4</th>
+			  <td>Value for both directions</td>
+			  <td>user input</td>
+			  <td>input must be referenced to Direction field</td>
+			</tr>
+			<tr>
+			  <th scope="row">5</th>
+			  <td>Default direction</td>
+			  <td>Both Directions | Forward Direction | Backward Direction</td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">6</th>
+			  <td>Speed Field</td>
+			  <td>Field containing speed values</td>
+			  <td>must be numerical</td>
+			</tr>
+			<tr>
+			  <th scope="row">7</th>
+			  <td>Default speed</td>
+			  <td>user input</td>
+			  <td><b>(!)</b> sets network entry- and exit-speed </td>
+			</tr>
+			<tr>
+			  <th scope="row">8</th>
+			  <td>Topology tolerance</td>
+			  <td>user input</td>
+			  <td>Tolerate gaps in network (crs units)</td>
+			</tr>
+		  </tbody>
+		</table>
+    </div>
+	
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-light">
+      <div class="container">
+        <p class="m-0 text-center text-black">Copyright &copy; Clemens Raffler, 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
