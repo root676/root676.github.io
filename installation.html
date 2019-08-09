@@ -66,7 +66,7 @@
       </div>
     </header>
 	<small  style="padding-left:1.5em"><i>Data Source: <a href="https://www.data.gv.at/katalog/dataset/1039ed7e-97fb-435f-b6cc-f6a105ba5e09" target="_blank">Stadt Wien – data.wien.gv.at</a></i></small>
-	
+
     <!-- Page Content -->
     <div class="container">
 
@@ -74,15 +74,15 @@
 		<div class="col-sm-8">
 		<h2 class="mt-4">Installation and Setup</h2>
 		<p>
-			When installing QNEAT3 using the QGIS Plugin Manager, a limited selection of algorithms (Shortest Path, OD-Matrices and certain Iso-Area algorithms) is available to you out-of-the-box. 
-			This is due to some Iso-Area algorithms (Iso-Contours and Iso-Polygons) relying on the <a target="_blank" href="https://matplotlib.org/">matplotlib</a> library 
+			When installing QNEAT3 using the QGIS Plugin Manager, a limited selection of algorithms (Shortest Path, OD-Matrices and certain Iso-Area algorithms) is available to you out-of-the-box.
+			This is due to some Iso-Area algorithms (Iso-Contours and Iso-Polygons) relying on the <a target="_blank" href="https://matplotlib.org/">matplotlib</a> library
 			that isn't shipped with QGIS3.
 		</p>
 		<p>
-			In order to activate the Iso-Area as Polygon/Contour algorithms you have to add the matplotlib library to your QGIS-Python installation. 
+			In order to activate the Iso-Area as Polygon/Contour algorithms you have to add the matplotlib library to your QGIS-Python installation.
 			Depending on your operating system you may install matplotlib <b>manually</b> using the following options:
-			<br><br> 
-			<b>Windows</b>: 
+			<br><br>
+			<b>Windows</b>:
 			<ol>
 				<li>Open the <i>OSGeo4W shell</i> that has been installed alongside QGIS (click <i>Start</i> - type <i>OSGeo4W Shell</i> - hit Enter)</li>
 				<li>Paste the command <code>python-qgis -m pip install matplotlib</code> into the shell</li>
@@ -96,8 +96,13 @@
 				<li>Paste the command <code>python-qgis -m pip install matplotlib</code> into the terminal, then hit Enter and confirm installation with 'yes' when prompted</li>
 				<li>Restart QGIS3</li>
 			</ol>
-			
-			
+      <br>
+      <b>macOS</b> <small>(Thanks to <a href=https://github.com/strozzascotte>@strozzascotte</a> for providing the macOS installation instructions!)</small>
+      <ol>
+        <li>Open a terminal</li>
+        <li>Paste the command <code>/Library/Frameworks/Python.framework/Versions/3.<i>x</i>/bin/pip3.<i>x</i> install matplotlib</code> (please replace the version number <code>x</code> according to your installation) into the terminal, then hit Enter and confirm installation with 'yes' when prompted</li>
+        <li>Restart QGIS3</li>
+      </ol>
 		</p>
 		After this installation, you are ready to use all QNEAT3 Algorithms.
 		</div>
@@ -111,14 +116,14 @@
 		</div>
         <div class="col-sm-8">
             <h2 class="mt-4">Tip on usage and output logging</h2>
-              <p>When running a QNEAT3 algorithm it can be useful to enable the processing window to stay open after the algorithm is finished. With this option enabled, you can inspect the algorithms messages and infos that are logged at runtime in the log window. 
+              <p>When running a QNEAT3 algorithm it can be useful to enable the processing window to stay open after the algorithm is finished. With this option enabled, you can inspect the algorithms messages and infos that are logged at runtime in the log window.
                 You may set this option under <i>Settings>Options...>Processing>General><b>Keep dialog open after running an algorithm</b></i> (tick the checkbox to enable this option).
-              </p>            
+              </p>
         </div>
 
 	</div>
-	
-		
+
+
       <!-- /.row -->
 
     </div>
